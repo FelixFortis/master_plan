@@ -1,0 +1,45 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "font-awesome";
+@import url(https://fonts.googleapis.com/css?family=Ubuntu);
+@import url(https://fonts.googleapis.com/css?family=Lobster);
+
+/*
+Colour scheme https://coolors.co/app/333333-f06543-e8e9eb-e0dfd5-f09d51
+*/
+$charcoal: #333333;
+$dark-orange: #f06543;
+$light-orange: #f09d51;
+$light-grey: #e0dfd5;
+$off-white: #e8e9eb;
+
+body {
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+html, body {
+    background: linear-gradient(to right, $dark-orange 2%, $light-orange 2%, $light-orange 4%, $light-grey 4%, $light-grey 6%, $charcoal 6%);
+    height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Lobster', cursive;
+    color: $off-white;
+}
+h1 {
+    font-size: 56px;
+}
+p {
+    font-family: 'Ubuntu', sans-serif;
+    color: $light-grey;
+}
+.site-wrapper {
+    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5) inset;
+    display: table;
+    height: 100%;
+    min-height: 100%;
+    width: 100%;
+}
+.site-wrapper-inner {
+    vertical-align: middle;
+    display: table-cell;
+}
