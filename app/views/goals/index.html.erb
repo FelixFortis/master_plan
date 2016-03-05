@@ -17,12 +17,11 @@
     <% @goals.each do |goal| %>
       <tr>
         <td><%= goal.title %></td>
-        <td><%= goal.type %></td>
         <td><%= goal.due_date %></td>
         <td><%= goal.description %></td>
-        <td><%= link_to 'Show', goal %></td>
-        <td><%= link_to 'Edit', edit_goal_path(goal) %></td>
-        <td><%= link_to 'Destroy', goal, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_goal_path(@user, goal) %></td>
+        <td><%= link_to 'Edit', edit_user_goal_path(@user, goal) %></td>
+        <td><%= link_to 'Destroy', [@user, goal], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Goal', new_goal_path %>
+<%= link_to 'New Goal', new_user_goal_path %>

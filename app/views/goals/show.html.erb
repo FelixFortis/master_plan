@@ -6,11 +6,6 @@
 </p>
 
 <p>
-  <strong>Type:</strong>
-  <%= @goal.type %>
-</p>
-
-<p>
   <strong>Due date:</strong>
   <%= @goal.due_date %>
 </p>
@@ -20,5 +15,5 @@
   <%= @goal.description %>
 </p>
 
-<%= link_to 'Edit', edit_goal_path(@goal) %> |
-<%= link_to 'Back', goals_path %>
+<%= link_to 'Edit', edit_user_goal_path %> |
+<%= link_to 'Back', user_goals_path %>
