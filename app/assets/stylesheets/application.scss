@@ -16,6 +16,8 @@ $off-white: #e8e9eb;
 body {
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    padding: 0;
+    margin: 0;
 }
 html, body {
     background: linear-gradient(to right, $dark-orange 2%, $light-orange 2%, $light-orange 4%, $light-grey 4%, $light-grey 6%, $charcoal 6%);
