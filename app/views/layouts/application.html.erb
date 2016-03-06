@@ -9,7 +9,7 @@
 <body>
   <div class="site-wrapper">
     <div class="site-wrapper-inner">
-      
+      <h1>Master Plan</h1>
       <% if user_signed_in? %>
         <p>Logged in as <strong><%= current_user.email %></strong>.</p>
         <%= link_to 'My Goals', user_goals_path(current_user) %> |
@@ -19,7 +19,7 @@
         <%= link_to "Sign up", new_user_registration_path %> |
         <%= link_to "Login", new_user_session_path %>
       <% end %>
-
+      <hr/>
       <% if notice %>
         <p class="notice"><%= notice %></p>
       <% elsif alert %>

@@ -1,5 +1,5 @@
 class MilestonesController < ApplicationController
-  before_filter :set_goal
+  before_filter :set_goal, :set_user
   before_action :set_milestone, only: [:show, :edit, :update, :destroy]
 
   # GET /milestones
@@ -25,7 +25,7 @@ class MilestonesController < ApplicationController
     @milestone = @goal.milestones.new(milestone_params)
 
     if @milestone.save
-      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully created.'
+      redirect_to user_goal_path(@user, @goal), notice: 'Milestone was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class MilestonesController < ApplicationController
   # PATCH/PUT /milestones/1
   def update
     if @milestone.update(milestone_params)
-      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully updated.'
+      redirect_to user_goal_path(@user, @goal), notice: 'Milestone was successfully updated.'
     else
       render :edit
     end
@@ -48,8 +48,12 @@ class MilestonesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-     def set_goal
+    def set_goal
       @goal = Goal.find(params[:goal_id])
+    end
+
+    def set_user
+      @user = @goal.user
     end
 
     def set_milestone
