@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/FelixFortis/master_plan.svg?branch=master)](https://travis-ci.org/FelixFortis/master_plan)
+
 # Master Plan
 
     Out of the night that covers me,
