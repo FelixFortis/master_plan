@@ -13,4 +13,7 @@
 
 class Milestone < ActiveRecord::Base
   belongs_to :goal
+  # has_many :steps, dependent: :destroy
+  
+  validates_presence_of :title, :due_date, :description
 end
