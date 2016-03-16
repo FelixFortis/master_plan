@@ -25,7 +25,7 @@ class MilestonesController < ApplicationController
     @milestone = @goal.milestones.new(milestone_params)
 
     if @milestone.save
-      redirect_to user_goal_path(@user, @goal), notice: 'Milestone was successfully created.'
+      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class MilestonesController < ApplicationController
   # PATCH/PUT /milestones/1
   def update
     if @milestone.update(milestone_params)
-      redirect_to user_goal_path(@user, @goal), notice: 'Milestone was successfully updated.'
+      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully updated.'
     else
       render :edit
     end
