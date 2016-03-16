@@ -19,6 +19,7 @@ require 'rails_helper'
 # that an instance is receiving a specific message.
 
 RSpec.describe GoalsController, type: :controller do
+  
   login_user
   before(:each) {@user = subject.current_user}
 
