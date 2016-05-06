@@ -13,7 +13,7 @@
 
 ActiveRecord::Schema.define(version: 20160303065024) do
 
-  create_table "milestones", force: :cascade do |t|
+  create_table "action_steps", force: :cascade do |t|
     t.string   "title",       limit: 255
     t.date     "due_date"
     t.text     "description", limit: 65535

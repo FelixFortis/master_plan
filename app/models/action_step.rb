@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: milestones
+# Table name: action_steps
 #
 #  id          :integer          not null, primary key
 #  title       :string(255)
@@ -11,7 +11,7 @@
 #  updated_at  :datetime         not null
 #
 
-class Milestone < ActiveRecord::Base
+class ActionStep < ActiveRecord::Base
   belongs_to :project
   # has_many :steps, dependent: :destroy
   

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @action_step.title %>
+</p>
+
+<p>
+  <strong>Due date:</strong>
+  <%= @action_step.due_date %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @action_step.description %>
+</p>
+
+<%= link_to 'Edit', edit_project_action_step_path(@project, @action_step) %> |
+<%= link_to 'Back', project_action_steps_path(@project) %>
