@@ -22,8 +22,8 @@ RSpec.describe MilestonesController, type: :controller do
 
   login_user
   before(:each) {@user = subject.current_user}
-  before(:each) {@user.goals.create!(title: 'bake a PIZZA', due_date: Date.tomorrow, description: "Learn to bake my favourite PIZZA - PEPPERONI!")}
-  before(:each) {@goal = @user.goals.first}
+  before(:each) {@user.projects.create!(title: 'bake a PIZZA', due_date: Date.tomorrow, description: "Learn to bake my favourite PIZZA - PEPPERONI!")}
+  before(:each) {@project = @user.projects.first}
 
   # This should return the minimal set of attributes required to create a valid
   # Milestone. As you add validations to Milestone, be sure to
@@ -37,31 +37,31 @@ RSpec.describe MilestonesController, type: :controller do
 
   describe "GET #index" do
     it "assigns all milestones as @milestones" do
-      milestone = @goal.milestones.create! valid_attributes
-      get :index, {goal_id: @goal.id}
+      milestone = @project.milestones.create! valid_attributes
+      get :index, {project_id: @project.id}
       expect(assigns(:milestones)).to eq([milestone])
     end
   end
 
   describe "GET #show" do
     it "assigns the requested milestone as @milestone" do
-      milestone = @goal.milestones.create! valid_attributes
-      get :show, {:id => milestone.to_param, goal_id: @goal.id}
+      milestone = @project.milestones.create! valid_attributes
+      get :show, {:id => milestone.to_param, project_id: @project.id}
       expect(assigns(:milestone)).to eq(milestone)
     end
   end
 
   describe "GET #new" do
     it "assigns a new milestone as @milestone" do
-      get :new, {goal_id: @goal.id}
+      get :new, {project_id: @project.id}
       expect(assigns(:milestone)).to be_a_new(Milestone)
     end
   end
 
   describe "GET #edit" do
     it "assigns the requested milestone as @milestone" do
-      milestone = @goal.milestones.create! valid_attributes
-      get :edit, {:id => milestone.to_param, goal_id: @goal.id}
+      milestone = @project.milestones.create! valid_attributes
+      get :edit, {:id => milestone.to_param, project_id: @project.id}
       expect(assigns(:milestone)).to eq(milestone)
     end
   end
@@ -70,30 +70,30 @@ RSpec.describe MilestonesController, type: :controller do
     context "with valid params" do
       it "creates a new Milestone" do
         expect {
-          post :create, {:milestone => valid_attributes, goal_id: @goal.id}
+          post :create, {:milestone => valid_attributes, project_id: @project.id}
         }.to change(Milestone, :count).by(1)
       end
 
       it "assigns a newly created milestone as @milestone" do
-        post :create, {:milestone => valid_attributes, goal_id: @goal.id}
+        post :create, {:milestone => valid_attributes, project_id: @project.id}
         expect(assigns(:milestone)).to be_a(Milestone)
         expect(assigns(:milestone)).to be_persisted
       end
 
       it "redirects to the created milestone" do
-        post :create, {:milestone => valid_attributes, goal_id: @goal.id}
-        expect(response).to redirect_to(goal_milestone_path(@goal, @goal.milestones.last))
+        post :create, {:milestone => valid_attributes, project_id: @project.id}
+        expect(response).to redirect_to(project_milestone_path(@project, @project.milestones.last))
       end
     end
 
     context "with invalid params" do
       it "assigns a newly created but unsaved milestone as @milestone" do
-        post :create, {:milestone => invalid_attributes, goal_id: @goal.id}
+        post :create, {:milestone => invalid_attributes, project_id: @project.id}
         expect(assigns(:milestone)).to be_a_new(Milestone)
       end
 
       it "re-renders the 'new' template" do
-        post :create, {:milestone => invalid_attributes, goal_id: @goal.id}
+        post :create, {:milestone => invalid_attributes, project_id: @project.id}
         expect(response).to render_template("new")
       end
     end
@@ -106,8 +106,8 @@ RSpec.describe MilestonesController, type: :controller do
       }
 
       it "updates the requested milestone" do
-        milestone = @goal.milestones.create! valid_attributes
-        put :update, {:id => milestone.to_param, :milestone => new_attributes, goal_id: @goal.id}
+        milestone = @project.milestones.create! valid_attributes
+        put :update, {:id => milestone.to_param, :milestone => new_attributes, project_id: @project.id}
         milestone.reload
         expect(milestone.attributes[:title]).to eq(new_attributes["title"])
         expect(milestone.attributes[:due_date]).to eq(new_attributes["due_date"])
@@ -115,28 +115,28 @@ RSpec.describe MilestonesController, type: :controller do
       end
 
       it "assigns the requested milestone as @milestone" do
-        milestone = @goal.milestones.create! valid_attributes
-        put :update, {:id => milestone.to_param, :milestone => valid_attributes, goal_id: @goal.id}
+        milestone = @project.milestones.create! valid_attributes
+        put :update, {:id => milestone.to_param, :milestone => valid_attributes, project_id: @project.id}
         expect(assigns(:milestone)).to eq(milestone)
       end
 
       it "redirects to the milestone" do
-        milestone = @goal.milestones.create! valid_attributes
-        put :update, {:id => milestone.to_param, :milestone => valid_attributes, goal_id: @goal.id}
-        expect(response).to redirect_to(goal_milestone_url(@goal, milestone))
+        milestone = @project.milestones.create! valid_attributes
+        put :update, {:id => milestone.to_param, :milestone => valid_attributes, project_id: @project.id}
+        expect(response).to redirect_to(project_milestone_url(@project, milestone))
       end
     end
 
     context "with invalid params" do
       it "assigns the milestone as @milestone" do
-        milestone = @goal.milestones.create! valid_attributes
-        put :update, {:id => milestone.to_param, :milestone => invalid_attributes, goal_id: @goal.id}
+        milestone = @project.milestones.create! valid_attributes
+        put :update, {:id => milestone.to_param, :milestone => invalid_attributes, project_id: @project.id}
         expect(assigns(:milestone)).to eq(milestone)
       end
 
       it "re-renders the 'edit' template" do
-        milestone = @goal.milestones.create! valid_attributes
-        put :update, {:id => milestone.to_param, :milestone => invalid_attributes, goal_id: @goal.id}
+        milestone = @project.milestones.create! valid_attributes
+        put :update, {:id => milestone.to_param, :milestone => invalid_attributes, project_id: @project.id}
         expect(response).to render_template("edit")
       end
     end
@@ -144,16 +144,16 @@ RSpec.describe MilestonesController, type: :controller do
 
   describe "DELETE #destroy" do
     it "destroys the requested milestone" do
-      milestone = @goal.milestones.create! valid_attributes
+      milestone = @project.milestones.create! valid_attributes
       expect {
-        delete :destroy, {:id => milestone.to_param, goal_id: @goal.id}
+        delete :destroy, {:id => milestone.to_param, project_id: @project.id}
       }.to change(Milestone, :count).by(-1)
     end
 
     it "redirects to the milestones list" do
-      milestone = @goal.milestones.create! valid_attributes
-      delete :destroy, {:id => milestone.to_param, goal_id: @goal.id}
-      expect(response).to redirect_to(goal_milestones_url(@goal))
+      milestone = @project.milestones.create! valid_attributes
+      delete :destroy, {:id => milestone.to_param, project_id: @project.id}
+      expect(response).to redirect_to(project_milestones_url(@project))
     end
   end
 

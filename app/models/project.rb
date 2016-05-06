@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: goals
+# Table name: projects
 #
 #  id          :integer          not null, primary key
 #  title       :string(255)
@@ -11,7 +11,7 @@
 #  user_id     :integer
 #
 
-class Goal < ActiveRecord::Base
+class Project < ActiveRecord::Base
   belongs_to :user
   has_many :milestones, dependent: :destroy
   # has_many :steps, dependent: :destroy

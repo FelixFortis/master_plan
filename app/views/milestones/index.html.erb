@@ -18,9 +18,9 @@
         <td><%= milestone.title %></td>
         <td><%= milestone.due_date %></td>
         <td><%= milestone.description %></td>
-        <td><%= link_to 'Show', goal_milestone_path(@goal, milestone) %></td>
-        <td><%= link_to 'Edit', edit_goal_milestone_path(@goal, milestone) %></td>
-        <td><%= link_to 'Delete', [@goal, milestone], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', project_milestone_path(@project, milestone) %></td>
+        <td><%= link_to 'Edit', edit_project_milestone_path(@project, milestone) %></td>
+        <td><%= link_to 'Delete', [@project, milestone], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,4 @@
 
 <br>
 
-<%= link_to 'New Milestone', new_goal_milestone_path %>
+<%= link_to 'New Milestone', new_project_milestone_path %>

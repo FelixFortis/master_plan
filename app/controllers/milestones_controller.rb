@@ -1,10 +1,10 @@
 class MilestonesController < ApplicationController
-  before_filter :set_goal, :set_user
+  before_filter :set_project, :set_user
   before_action :set_milestone, only: [:show, :edit, :update, :destroy]
 
   # GET /milestones
   def index
-    @milestones = @goal.milestones.all
+    @milestones = @project.milestones.all
   end
 
   # GET /milestones/1
@@ -13,7 +13,7 @@ class MilestonesController < ApplicationController
 
   # GET /milestones/new
   def new
-    @milestone = @goal.milestones.new
+    @milestone = @project.milestones.new
   end
 
   # GET /milestones/1/edit
@@ -22,10 +22,10 @@ class MilestonesController < ApplicationController
 
   # POST /milestones
   def create
-    @milestone = @goal.milestones.new(milestone_params)
+    @milestone = @project.milestones.new(milestone_params)
 
     if @milestone.save
-      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully created.'
+      redirect_to project_milestone_path(@project, @milestone), notice: 'Milestone was successfully created.'
     else
       render :new
     end
@@ -34,7 +34,7 @@ class MilestonesController < ApplicationController
   # PATCH/PUT /milestones/1
   def update
     if @milestone.update(milestone_params)
-      redirect_to goal_milestone_path(@goal, @milestone), notice: 'Milestone was successfully updated.'
+      redirect_to project_milestone_path(@project, @milestone), notice: 'Milestone was successfully updated.'
     else
       render :edit
     end
@@ -43,21 +43,21 @@ class MilestonesController < ApplicationController
   # DELETE /milestones/1
   def destroy
     @milestone.destroy
-    redirect_to goal_milestones_url(@goal), notice: 'Milestone was successfully destroyed.'
+    redirect_to project_milestones_url(@project), notice: 'Milestone was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_goal
-      @goal = Goal.find(params[:goal_id])
+    def set_project
+      @project = Project.find(params[:project_id])
     end
 
     def set_user
-      @user = @goal.user
+      @user = @project.user
     end
 
     def set_milestone
-      @milestone = @goal.milestones.find(params[:id])
+      @milestone = @project.milestones.find(params[:id])
     end
 
    # Only allow a trusted parameter "white list" through.

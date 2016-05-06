@@ -3,16 +3,14 @@ Rails.application.routes.draw do
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
   
   resources :users do  
-    resources :goals do
+    resources :projects do
       resources :milestones
     end
   end
 
-  resources :goals do
+  resources :projects do
     resources :milestones
   end
-  
-  get 'home/index'
   
   root 'home#index'
 
