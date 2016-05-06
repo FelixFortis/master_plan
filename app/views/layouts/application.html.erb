@@ -12,7 +12,7 @@
       <h1>Master Plan</h1>
       <% if user_signed_in? %>
         <p>Logged in as <strong><%= current_user.email %></strong>.</p>
-        <%= link_to 'My Goals', user_goals_path(current_user) %> |
+        <%= link_to 'My Projects', user_projects_path(current_user) %> |
         <%= link_to 'Edit Profile', edit_user_registration_path %> |
         <%= link_to "Logout", destroy_user_session_path, method: :delete %>
       <% else %>

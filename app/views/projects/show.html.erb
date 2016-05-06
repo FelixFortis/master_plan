@@ -1,0 +1,43 @@
+<h3>Project</h3>
+
+<p>
+  <strong>Title:</strong>
+  <%= @project.title %>
+</p>
+<p>
+  <strong>Due date:</strong>
+  <%= @project.due_date %>
+</p>
+<p>
+  <strong>Description:</strong>
+  <%= @project.description %>
+</p>
+<hr/>
+<% if @project.milestones.any? %>
+  <h3>Milestones</h3>
+
+  <% @project.milestones.each do |milestone| %>
+
+    <p>
+      <strong>Title:</strong>
+      <%= milestone.title %>
+    </p>
+    <p>
+      <strong>Due date:</strong>
+      <%= milestone.due_date %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= milestone.description %>
+    </p>
+
+    <%= link_to 'Show milestone', project_milestone_path(@project, milestone) %> |
+    <%= link_to 'Edit milestone', edit_project_milestone_path(@project, milestone) %> | 
+    <%= link_to 'Delete milestone', [@project, milestone], method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+  <hr/>
+<% end %>
+
+<%= link_to 'New milestone', new_project_milestone_path(@project) %> |
+<%= link_to 'Edit Project', edit_user_project_path %> |
+<%= link_to 'Back', user_projects_path %>

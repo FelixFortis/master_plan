@@ -1,10 +1,10 @@
 require 'rails_helper'
 
-RSpec.describe "Goals", type: :request do
+RSpec.describe "Projects", type: :request do
   
-  # describe "GET /goals" do
+  # describe "GET /projects" do
   #   it "works! (now write some real specs)" do
-  #     get user_goals_path(@user)
+  #     get user_projects_path(@user)
   #     expect(response).to have_http_status(200)
   #   end
   # end

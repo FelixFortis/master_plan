@@ -1,6 +1,6 @@
-class CreateGoals < ActiveRecord::Migration
+class CreateProjects < ActiveRecord::Migration
   def change
-    create_table :goals do |t|
+    create_table :projects do |t|
       t.string :title
       t.string :type
       t.date :due_date
