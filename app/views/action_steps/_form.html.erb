@@ -1,10 +1,10 @@
-<%= form_for [@project, @milestone] do |f| %>
-  <% if @milestone.errors.any? %>
+<%= form_for [@project, @action_step] do |f| %>
+  <% if @action_step.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@milestone.errors.count, "error") %> prohibited this milestone from being saved:</h2>
+      <h2><%= pluralize(@action_step.errors.count, "error") %> prohibited this action_step from being saved:</h2>
 
       <ul>
-      <% @milestone.errors.full_messages.each do |message| %>
+      <% @action_step.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>

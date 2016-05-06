@@ -4,12 +4,12 @@ Rails.application.routes.draw do
   
   resources :users do  
     resources :projects do
-      resources :milestones
+      resources :action_steps
     end
   end
 
   resources :projects do
-    resources :milestones
+    resources :action_steps
   end
   
   root 'home#index'

@@ -1,6 +1,6 @@
-class CreateMilestones < ActiveRecord::Migration
+class CreateActionSteps < ActiveRecord::Migration
   def change
-    create_table :milestones do |t|
+    create_table :action_steps do |t|
       t.string :title
       t.date :due_date
       t.text :description

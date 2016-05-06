@@ -13,31 +13,31 @@
   <%= @project.description %>
 </p>
 <hr/>
-<% if @project.milestones.any? %>
-  <h3>Milestones</h3>
+<% if @project.action_steps.any? %>
+  <h3>Action Steps</h3>
 
-  <% @project.milestones.each do |milestone| %>
+  <% @project.action_steps.each do |action_step| %>
 
     <p>
       <strong>Title:</strong>
-      <%= milestone.title %>
+      <%= action_step.title %>
     </p>
     <p>
       <strong>Due date:</strong>
-      <%= milestone.due_date %>
+      <%= action_step.due_date %>
     </p>
     <p>
       <strong>Description:</strong>
-      <%= milestone.description %>
+      <%= action_step.description %>
     </p>
 
-    <%= link_to 'Show milestone', project_milestone_path(@project, milestone) %> |
-    <%= link_to 'Edit milestone', edit_project_milestone_path(@project, milestone) %> | 
-    <%= link_to 'Delete milestone', [@project, milestone], method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Show action_step', project_action_step_path(@project, action_step) %> |
+    <%= link_to 'Edit action_step', edit_project_action_step_path(@project, action_step) %> | 
+    <%= link_to 'Delete action_step', [@project, action_step], method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
   <hr/>
 <% end %>
 
-<%= link_to 'New milestone', new_project_milestone_path(@project) %> |
+<%= link_to 'New action_step', new_project_action_step_path(@project) %> |
 <%= link_to 'Edit Project', edit_user_project_path %> |
 <%= link_to 'Back', user_projects_path %>
